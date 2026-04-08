@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmanuel- <cmanuel-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/08 23:25:33 by cmanuel-          #+#    #+#             */
+/*   Updated: 2026/04/08 23:25:46 by cmanuel-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 
 void Contact::addContact(void)
@@ -62,5 +74,4 @@ void Contact::printData(void)
     std::cout << std::left << std::setw(14) << "Phone Number" << ": " << phone << std::endl;
     std::cout << std::left << std::setw(14) << "Darkest Secret" << ": " << secret << std::endl;
 };
-
 
