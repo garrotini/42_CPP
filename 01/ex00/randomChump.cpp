@@ -3,7 +3,7 @@
 
 std::string randomName(void)
 {
-    static const char charset[] = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    std::string charset = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     std::string name;
 
     for (int i = 0; i < LENGTH; i++)
