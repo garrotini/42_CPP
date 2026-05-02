@@ -21,16 +21,16 @@
 class Contact
 {
     private:
-	std::string first;
-	std::string last;
-	std::string nick;
-	std::string phone;
-	std::string secret;
+		std::string first;
+		std::string last;
+		std::string nick;
+		std::string phone;
+		std::string secret;
 
     public:
-	void addContact(void);
-	void printContact(void);
-	void printData(void);
+		void addContact(void);
+		void printContact(void);
+		void printData(void);
 };
 
 #endif

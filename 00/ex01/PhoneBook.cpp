@@ -20,17 +20,17 @@ bool PhoneBook::isEmpty(void)
 int min(int x, int y)
 {
     if (x < y)
-	return x;
+		return x;
     else
-	return y;
+		return y;
 }
 
 void PhoneBook::searchIndex(int x)
 {
     if (x >= 0 && x < min(count, 8))
-	contacts[x].printData();
+		contacts[x].printData();
     else
-	std::cout << "ERROR: Index " << x << " not assigned to any contact yet." << std::endl;
+		std::cout << "ERROR: Index " << x << " not assigned to any contact yet." << std::endl;
 }
 
 void PhoneBook::addContact(void)
@@ -51,16 +51,16 @@ void PhoneBook::printAll(void)
     
     for (int i = 0; i < 4; i++)
     {
-	for (int j = 0; j < 10; j++)
-	    std::cout << "-";
-	std::cout << "|";
+		for (int j = 0; j < 10; j++)
+			std::cout << "-";
+		std::cout << "|";
     }
     std::cout << std::endl;
 
     for (int i = 0; i < min(count,8); i++)
     {
-	std::cout << std::right << std::setw(10) << i << "|";
-	contacts[i].printContact();
+		std::cout << std::right << std::setw(10) << i << "|";
+		contacts[i].printContact();
     }
 }
 
@@ -71,16 +71,16 @@ int PhoneBook::searchPrompt()
     getline(std::cin, in);
 
     if (in.empty())
-	return -1;
+		return -1;
 
     for (size_t i = 0; i < in.length(); i++)
     {
-	if (!std::isdigit(in[i]))
-	    return -1;
+		if (!std::isdigit(in[i]))
+			return -1;
     }
 
     int n = std::atoi(in.c_str());
     if (n < 0 || n > 7)
-	return -1;
+		return -1;
     return n;
 }

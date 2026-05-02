@@ -26,17 +26,17 @@
 class PhoneBook
 {
     private:
-	Contact contacts[8];
-	int count;
+		Contact contacts[8];
+		int count;
 
     public:
-	PhoneBook(void) : count(0) {}
+		PhoneBook(void) : count(0) {}
 
-	bool isEmpty(void);
-	void addContact(void);
-	void printAll(void);
-	int searchPrompt();
-	void searchIndex(int x);
+		bool isEmpty(void);
+		void addContact(void);
+		void printAll(void);
+		int searchPrompt();
+		void searchIndex(int x);
 };
 
 #endif

@@ -7,7 +7,7 @@ std::string randomName(void)
     std::string name;
 
     for (int i = 0; i < LENGTH; i++)
-	name += charset[rand() % 62];
+		name += charset[rand() % 62];
     return name;
 }
 

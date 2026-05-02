@@ -12,10 +12,10 @@
 class Zombie
 {
     private:
-	std::string name;
+		std::string name;
     public:
-	Zombie(std::string n);
-	void announce(void);
+		Zombie(std::string n);
+		void announce(void);
 };
 
 std::string randomName(void);
