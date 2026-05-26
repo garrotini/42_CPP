@@ -6,7 +6,7 @@ int main(void)
     z->announce();
     delete z;
 
-    srand(time(NULL));
+	std::srand(time(NULL));
     std::string random_name = randomName();
     randomChump(random_name);
 
