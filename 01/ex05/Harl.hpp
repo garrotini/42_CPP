@@ -16,13 +16,13 @@
 class Harl 
 {
 	private:
-		void debug(void)	{ std::cout << DEBUG	<< std::endl; }
-		void info(void)		{ std::cout << INFO		<< std::endl; }
-		void warning(void)	{ std::cout << WARNING	<< std::endl; }
-		void error(void)	{ std::cout << ERROR	<< std::endl; }
+		void debug(void) ;	
+		void info(void)	;	
+		void warning(void) ;	
+		void error(void) ;
 	public:
-		Harl(void)	{ std::cout << "you've entered 42 Lisboa!" << std::endl; }
-		~Harl(void)	{ std::cout << "you've left 42 Lisboa!" << std::endl; }
+		Harl(void) ;
+		~Harl(void)	;
 		void complain(std::string level);
 };
 
