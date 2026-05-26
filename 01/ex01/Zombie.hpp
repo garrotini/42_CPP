@@ -3,8 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <ctime>
 
 #define BRAINZ ": BraiiiiiiinnnzzzZ..."
 #define LENGTH 16
