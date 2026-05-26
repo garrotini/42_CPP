@@ -34,13 +34,19 @@ int main(int ac, char *av[])
 
 	if (outFile.fail())
 	{
-		std::cout << "Error opening outfile file" << std::endl;
+		std::cout << "Error opening output file" << std::endl;
 		return 1;
 	}
 
 	std::string line;
 	std::string s1 = av[2];
 	std::string s2 = av[3];
+
+	if (s1.empty())
+	{
+		std::cout << "Error! s1 cannot be empty!" << std::endl;
+		return 1;
+	}
 
 	while (std::getline(inFile,line))
 	{
