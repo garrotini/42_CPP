@@ -5,7 +5,6 @@
 #include <string>
 
 #define BRAINZ ": BraiiiiiiinnnzzzZ..."
-#define LENGTH 16
 
 class Zombie
 {

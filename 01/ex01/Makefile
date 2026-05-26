@@ -1,5 +1,3 @@
-
-
 NAME 	= zombie
 SRC	= main.cpp zombieHorde.cpp Zombie.cpp
 OBJ	= $(SRC:.cpp=.o)
@@ -11,7 +9,7 @@ all: $(OBJ) $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp Zombie.hpp
+%.o: %.cpp 
 	$(CXX) $(CFLAGS) -c $< -o $@
 
 fclean: clean
