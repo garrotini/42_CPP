@@ -13,7 +13,6 @@ std::string randomName(void)
 
 void randomChump(std::string name)
 {
-    Zombie *y = newZombie(name);
-    y->announce();
-    delete y;
+    Zombie z(name);
+    z.announce();
 }
