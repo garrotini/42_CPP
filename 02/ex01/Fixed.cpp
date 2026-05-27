@@ -73,3 +73,16 @@ float Fixed::toInt(void) const
 {
 	return (this->_value >> _bits);
 }
+
+// this function will set a specific behave for << operator!
+// otherwise you get compiler errors, because Fixed class would have no conversion to int or float
+// toFloat converts the output to 'human-readable' decimal form, therefore, printable
+// it must be a FREE function (and not a member), because left operand is 'std::ostream' and not 'Fixed'
+// (and you can't add a member to 'ostream')
+
+std::ostream& operator<<(std::ostream &out, const Fixed &fix)
+{
+	out << fix.toFloat();
+	return out;
+}
+			

@@ -1,11 +1,5 @@
 #include "Fixed.hpp"
 
-std::ostream& operator<<(std::ostream &out, const Fixed &fix)
-{
-	out << fix.toFloat();
-	return out;
-}
-			
 int main(void)
 {
 	// FIRST TEST
