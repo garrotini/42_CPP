@@ -60,5 +60,12 @@ int main(void)
 	std::cout << "a*b*c: " << a.toFloat() * b.toFloat() * c.toFloat() << std::endl;
 	std::cout << "f    : " << f << std::endl;
 
+	// FORTH
+	std::cout << "\n--FORTH TEST--\n";
+	
+	const Fixed g = a + b + c;
+	std::cout << "a+b+c  : " << a.toFloat()+b.toFloat()+c.toFloat() << std::endl;
+	std::cout << "const g: " << d << std::endl;
+
 	return 0;
 }

@@ -69,7 +69,7 @@ float Fixed::toFloat(void) const
 	return (static_cast<float>(this->_value) / (1 << this->_bits));
 }
 
-float Fixed::toInt(void) const
+int Fixed::toInt(void) const
 {
 	return (this->_value >> _bits);
 }
