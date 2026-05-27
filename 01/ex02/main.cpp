@@ -9,8 +9,8 @@ int main()
 
     // print memory address of: string variable, stringPTR and stringREF
     std::cout << &str << " -> memory address of string variable" << std::endl;
-    std::cout << stringPTR << " -> memory address of stringPTR" << std::endl;
-    std::cout << &stringREF << " -> memory address of stringREF" << std::endl;
+    std::cout << stringPTR << " -> memory address held by stringPTR" << std::endl;
+    std::cout << &stringREF << " -> memory address held by stringREF" << std::endl;
 
     std::cout << "---" << std::endl;
 
