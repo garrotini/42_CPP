@@ -22,7 +22,7 @@ void Harl::complain(std::string level)
 		}
 	}
 	
-	std::cout << "Error: Unknown level: " << level << std::endl;
-	std::cout << "Usage: ./harl <level> { debug | info | warning | error }" << std::endl;
+	std::cerr << "Error: Unknown level: " << level << std::endl;
+	std::cerr << "Usage: ./harl <level> { DEBUG | INFO | WARNING | ERROR }" << std::endl;
 }
 

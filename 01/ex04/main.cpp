@@ -10,7 +10,7 @@ int main(int ac, char *av[])
 
 	if (ac != 4)
 	{
-		std::cout << "Error: Invalid number of arguments." << std::endl;
+		std::cerr << "Error: Invalid number of arguments." << std::endl;
 		return 1;
 	}
 	
@@ -24,7 +24,7 @@ int main(int ac, char *av[])
 
 	if (inFile.fail())
 	{
-		std::cout << "Error opening input file" << std::endl;
+		std::cerr << "Error opening input file" << std::endl;
 		return 1;
 	}
 
@@ -34,7 +34,7 @@ int main(int ac, char *av[])
 
 	if (outFile.fail())
 	{
-		std::cout << "Error opening output file" << std::endl;
+		std::cerr << "Error opening output file" << std::endl;
 		return 1;
 	}
 
@@ -44,7 +44,7 @@ int main(int ac, char *av[])
 
 	if (s1.empty())
 	{
-		std::cout << "Error! s1 cannot be empty!" << std::endl;
+		std::cerr << "Error! s1 cannot be empty!" << std::endl;
 		return 1;
 	}
 

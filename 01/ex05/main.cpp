@@ -4,7 +4,7 @@ int main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		std::cout << "Usage: ./harl <level> \t{ DEBUG | INFO | WARNING | ERROR }" << std::endl;
+		std::cerr << "Usage: ./harl <level> \t{ DEBUG | INFO | WARNING | ERROR }" << std::endl;
 		return 1;
 	}
 
