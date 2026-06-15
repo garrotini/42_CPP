@@ -38,11 +38,6 @@ FragTrap::~FragTrap()
 	std::cout << ".FT Destructor called!" << std::endl;
 }
 
-void FragTrap::guardGate()
-{
-	std::cout << "FragTrap " << name << " is now in Gate Keeper mode!" << std::endl;
-}
-
 void FragTrap::highFiveGuys(void)
 {
 	std::cout << "FragTrap " << name << " is HIGH FIVING EVERYONE!" << std::endl;
