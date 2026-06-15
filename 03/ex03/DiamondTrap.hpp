@@ -10,9 +10,6 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		std::string _name;
 	
 	public:
-		using FragTrap::_hit;
-		using FragTrap::_damage;
-		using ScavTrap::_energy;
 		DiamondTrap();
 		DiamondTrap(std::string name);
 		DiamondTrap(const DiamondTrap &src);

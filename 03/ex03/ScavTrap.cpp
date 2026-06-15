@@ -20,7 +20,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
 {
-	std::cout << ".ST Copy constructor crossing:" << src._name << std::endl;
+	std::cout << ".ST Copy constructor crossing: " << src._name << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &src)

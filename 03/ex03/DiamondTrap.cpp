@@ -1,18 +1,31 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap()
+// as ScavTrap and FragTrap are now using "virtual inheritance" of the ClapTrap class
+// we now need to call the constructor ourselves on the DiamondTrap constructors!
+// we now initialize ClapTrap along with ScavTrap and FragTrap
+// (calls to ClapTrap from ScavT and FragT are being suppressed due to virtual inheritance!)
+// this is a typical Diamond Problem!
+
+DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
 {
 	std::cout << ".DT Default Constructor called!" << std::endl;
 	this->_name = "DTx";
+	this->_hit = 100;     // FragTrap
+    this->_energy = 50;   // ScavTrap
+    this->_damage = 30;   // FragTrap
+
 };
 
-DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name + "_clap_name"), FragTrap(name + "_clap_name")
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name + "_clap_name"), FragTrap(name + "_clap_name")
 {
 	std::cout << ".DT Parameterized Constructor called!" << std::endl;
 	this->_name = name;
+	this->_hit = 100;     // FragTrap
+    this->_energy = 50;   // ScavTrap
+    this->_damage = 30;   // FragTrap
 };
 
-DiamondTrap::DiamondTrap(const DiamondTrap &src) : ScavTrap(src), FragTrap(src)
+DiamondTrap::DiamondTrap(const DiamondTrap &src) : ClapTrap(src), ScavTrap(src), FragTrap(src)
 {
 	std::cout << ".DT Copy constructor crossing: " << src._name << std::endl;
 	this->_name = src._name;
