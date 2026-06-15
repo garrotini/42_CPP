@@ -20,7 +20,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 
 FragTrap::FragTrap(const FragTrap &src) : ClapTrap(src)
 {
-	std::cout << ".FT Copy constructor crossing:" << src._name << std::endl;
+	std::cout << ".FT Copy constructor crossing: " << src._name << std::endl;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap &src)
@@ -47,7 +47,7 @@ void FragTrap::attack(const std::string& target)
 {
 	if (_hit <= 0)
 	{
-		std::cout << "Scavtrap " << this->_name << " has died!" << std::endl;
+		std::cout << "FragTrap " << this->_name << " has died!" << std::endl;
 		return ;
 	}
 	if (_energy > 0)

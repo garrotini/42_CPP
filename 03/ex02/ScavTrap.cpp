@@ -20,7 +20,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
 {
-	std::cout << ".ST Copy constructor crossing:" << src._name << std::endl;
+	std::cout << ".ST Copy constructor crossing: " << src._name << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &src)
@@ -47,7 +47,7 @@ void ScavTrap::attack(const std::string& target)
 {
 	if (_hit <= 0)
 	{
-		std::cout << "Scavtrap " << this->_name << " has died!" << std::endl;
+		std::cout << "ScavTrap " << this->_name << " has died!" << std::endl;
 		return ;
 	}
 	if (_energy > 0)

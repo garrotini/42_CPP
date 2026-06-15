@@ -42,9 +42,13 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 
 ClapTrap::~ClapTrap() { std::cout << ".CT Destructor called!" << std::endl; };
 
-
 void ClapTrap::attack(const std::string& target)
 {
+	if (this->_hit <= 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " has died!" << std::endl;
+		return ;
+	}
 	if (_energy > 0)
 	{
 		std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _damage << " points of damage!" << std::endl;
@@ -63,7 +67,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 	}
 	if (this->_hit > 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " got attacked and lost " << amount << " _hit points!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " got attacked and lost " << amount << " hit points!" << std::endl;
 		this->_hit -= amount;
 	}
 	if (this->_hit <= 0)
