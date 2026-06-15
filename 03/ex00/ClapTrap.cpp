@@ -21,7 +21,6 @@ ClapTrap::ClapTrap(std::string name)
 // copy constructor
 ClapTrap::ClapTrap(const ClapTrap &ct)
 {
-		
 	std::cout << ".Making a clone of " << ct._name << " via copy constructor" << std::endl;
 	_name = ct._name;
 	_hit = ct._hit;
@@ -46,6 +45,11 @@ ClapTrap::~ClapTrap() { std::cout << ".Destructor called!" << std::endl; };
 
 void ClapTrap::attack(const std::string& target)
 {
+	if (this->_hit <= 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " has died!" << std::endl;
+		return ;
+	}
 	if (_energy > 0)
 	{
 		std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _damage << " points of damage!" << std::endl;
@@ -58,18 +62,23 @@ void ClapTrap::attack(const std::string& target)
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hit <= 0)
-		std::cout << "ClapTrap " << this->_name << " has died!" << std::endl;
-	if (this->_hit > 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " got attacked and lost " << amount << " hit points!" << std::endl;
-		this->_hit -= amount;
+		std::cout << "ClapTrap " << this->_name << " has died!" << std::endl;
+		return ;
 	}
+	std::cout << "ClapTrap " << this->_name << " got attacked and lost " << amount << " hit points!" << std::endl;
+	this->_hit -= amount;
 	if (this->_hit <= 0)
 		std::cout << "ClapTrap " << this->_name << " has died!" << std::endl;
 };
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
+	if (this->_hit <= 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " has died!" << std::endl;
+		return ;
+	}
 	if (this->_energy > 0)
 	{
 		this->_hit += amount;
