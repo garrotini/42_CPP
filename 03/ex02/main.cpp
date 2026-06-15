@@ -50,7 +50,6 @@ int main()
 	x.attack("nobody");
 	y.highFiveGuys();
 	cloniy.takeDamage(123);
-	clonix.guardGate();
 	x.beRepaired(42);
 	
 	std::cout << std::endl << "_c_l_e_a_n_i_n_g_" << std::endl << std::endl;
