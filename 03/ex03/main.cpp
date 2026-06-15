@@ -56,15 +56,36 @@ int main()
 	
 	std::cout << std::endl << "__DIAMONDTRAP__" << std::endl << std::endl;
 
-	DiamondTrap r;				// default constructor: CT, FT
-	// std::cout << "-> ST name: " << r.getName();
-	// std::cout << "; energy: " << r.getEnergy();
-	// std::cout << "; hit: " << r.getHit();
-	// std::cout << "; damage: " << r.getDamage() << std::endl << std::endl;
+	DiamondTrap r;
+	std::cout << "-> DT name: " << r.getName();
+	std::cout << "; energy: " << r.getEnergy();
+	std::cout << "; hit: " << r.getHit();
+	std::cout << "; damage: " << r.getDamage() << std::endl << std::endl;
 
+	// DiamondTrap cloner;
+	// cloner = r;
+	
+	DiamondTrap s("Robot");
+	std::cout << "-> DT name: " << s.getName();
+	std::cout << "; energy: " << s.getEnergy();
+	std::cout << "; hit: " << s.getHit();
+	std::cout << "; damage: " << s.getDamage() << std::endl << std::endl;
+		
 	r.attack("the Sky");
 	r.highFiveGuys();
 	r.guardGate();
+
+	s.guardGate();
+	s.whoAmI();
+
+	DiamondTrap cloner(r);
+	cloner.takeDamage(1000);
+	
+	DiamondTrap clones;
+	clones = s;
+
+	s.takeDamage(1);
+	s.beRepaired(11);
 	
 	std::cout << std::endl << "_c_l_e_a_n_i_n_g_" << std::endl << std::endl;
 

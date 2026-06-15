@@ -20,7 +20,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 
 FragTrap::FragTrap(const FragTrap &src) : ClapTrap(src)
 {
-	std::cout << ".FT Copy constructor crossing:" << src.name << std::endl;
+	std::cout << ".FT Copy constructor crossing: " << src.name << std::endl;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap &src)
