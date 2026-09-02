@@ -6,9 +6,12 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 	std::cout << ".Default Constructor" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
-	// this->_grade = grade;
+	// this->_grade = this->setGrade(grade);
+	this->_grade = grade;
+	this->incrementGrade(0);
+
 	std::cout << ".Parameterized Constructor" << std::endl;
 }
 
@@ -47,19 +50,36 @@ void Bureaucrat::setGrade(int new_grade)
 	else if (new_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	this->_grade = new_grade;
+	// return new_grade;
 }
 
 void Bureaucrat::incrementGrade(int i)
 {
-	if ((this->_grade - i) > 0)
-		return (setGrade(this->_grade - i));
+	if (i < 0)
+	{
+		std::cerr << "! Invalid increment value. Grade not changed !" << std::endl;
+		return ;
+	}
+
+	int n = this->_grade - i;
+
+	if (n > 0)
+		return (setGrade(n));
 	throw Bureaucrat::GradeTooHighException();
 }
 
 void Bureaucrat::decrementGrade(int i)
 {
-	if ((this->_grade + i) <= 150)
-		return (setGrade(this->_grade + i));
+	if (i < 0)
+	{
+		std::cerr << "! Invalid decrement value. Grade not changed !" << std::endl;
+		return ;
+	}
+
+	int n = this->_grade + i;
+
+	if (n <= 150)
+		return (setGrade(n));
 	throw Bureaucrat::GradeTooLowException();
 }
 

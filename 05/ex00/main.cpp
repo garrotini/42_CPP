@@ -44,19 +44,37 @@ int main()
 	{
 		std::cerr << "! " << e.what() << std::endl;
 	}
+
 	// wrong init
 	std::cout << std::endl << "-- WRONG INIT TESTS --" << std::endl << std::endl;
 
-	Bureaucrat a1("low",0);
-	Bureaucrat a2("high",151);
+	try
+	{
+		Bureaucrat a1("high",0);
+	}
+
+	catch (std::exception &e)
+	{
+		std::cerr << "! " << e.what() << std::endl;
+	}
+
+	try
+	{
+		Bureaucrat a2("low",151);
+	}
+
+	catch (std::exception &e)
+	{
+		std::cerr << "! " << e.what() << std::endl;
+	}
 
 	// increment and decrement tests
 	std::cout << std::endl << "-- INCREMENT/DECREMENT TESTS --" << std::endl << std::endl;
 	
 	try
 	{
-		// Bureaucrat c("CC", 2);
-		Bureaucrat c("CC", 1);
+		Bureaucrat c("CC", 2);
+		// Bureaucrat c("CC", 1);
 		c.incrementGrade(1);
 		std::cout << c;
 	}
@@ -71,7 +89,7 @@ int main()
 	{
 		Bureaucrat e("EE", 148);
 		// Bureaucrat e("EE", 149);
-		e.decrementGrade(2);
+		e.decrementGrade(-2);
 		std::cout << e;
 	}
 
