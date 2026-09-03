@@ -1,5 +1,6 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
+#include <string>
 
 Form::Form() : _name("Default"),_is_signed(0),  _sign_grade(0), _exec_grade(0)
 {
@@ -24,12 +25,7 @@ Form  &Form::operator=(const Form &other)
 {
     std::cout << ".FORM Assign Operator called" << std::endl;
     if (this != &other)
-	{
-		this->_name = other.getName();
 		this->_is_signed = other.getIsSigned();
-		this->_sign_grade = other.getSignGrade();
-		this->_exec_grade = other.getExecGrade();
-	}
     return *this;
 }
 
@@ -40,14 +36,47 @@ Form::~Form()
 
 bool Form::beSigned(Bureaucrat &buro)
 {
-	if (buro.getGrade() <= getSignGrade())
-	{
-		setIsSigned(true);
-		return true;
-	}
-	return false;
+	if (buro.getGrade() > this->_sign_grade)
+		throw Form::GradeTooLowException();
+	else
+		return false;
 }
 
+std::string Form::getName() const
+{
+	return _name;
+}
 
+int Form::getSignGrade() const
+{
+	return _sign_grade;
+}
 
+int Form::getExecGrade() const
+{
+	return _exec_grade;
+}
+
+bool Form::getIsSigned() const
+{
+	return _is_signed;
+}
+
+void Form::setIsSigned(bool n)
+{
+	if (n == true)
+		_is_signed = true;
+	else
+		_is_signed = false;
+}
+
+const char *Form::GradeTooLowException::what() const throw() 
+{
+	return "his grade is too low";
+}
+
+const char *Form::GradeTooHighException::what() const throw() 
+{
+	return "his grade is too high";
+}
 

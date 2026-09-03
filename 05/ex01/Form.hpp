@@ -27,8 +27,6 @@ class Form
 		int getSignGrade() const;
 		int getExecGrade() const;
 		void setIsSigned(bool n);
-		void setSignGrade(int new_grade);
-		void setExecGrade(int new_grade);
 
 		bool beSigned(Bureaucrat &buro);
 
