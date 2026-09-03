@@ -80,3 +80,10 @@ const char *Form::GradeTooHighException::what() const throw()
 	return "his grade is too high";
 }
 
+std::ostream &operator<<(std::ostream &out, const Form &src) 
+{
+    out << "form: " <<  src.getName() << ", signed: " << src.getIsSigned() << ", sign grade: " << src.getSignGrade() << ", exec grade: "
+	   << src.getExecGrade() << std::endl;
+    return out;
+}
+

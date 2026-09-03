@@ -11,7 +11,9 @@ int main()
 		Bureaucrat a("AA", 5);
 		Form one("formz",false,10,10);
 		std::cout << a;
+		std::cout << one;
 		a.signForm(one);
+		std::cout << one;
 		a.decrementGrade(10);
 		std::cout << a;
 		a.signForm(one);
@@ -31,33 +33,24 @@ int main()
 		a.decrementGrade(10);
 		std::cout << a;
 		a.signForm(one);
-	}
-	
-	catch (std::exception &e)
-	{
-		std::cerr << "! " << e.what() << std::endl;
-	}
-	
-	try
-	{
-		Bureaucrat a("AA", 5);
-		Form one;
+		a.incrementGrade(14);
 		std::cout << a;
 		a.signForm(one);
-		a.signForm(one);
 	}
 	
 	catch (std::exception &e)
 	{
 		std::cerr << "! " << e.what() << std::endl;
 	}
-
+	
 	try
 	{
 		Bureaucrat a("AA", 150);
 		Form one;
 		std::cout << a;
+		std::cout << one;
 		a.signForm(one);
+		std::cout << one;
 	}
 	
 	catch (std::exception &e)
