@@ -1,5 +1,4 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 int main()
 {
@@ -10,7 +9,7 @@ int main()
 	try
 	{
 		Bureaucrat a("AA", 5);
-		Form one("math",false,10,10);
+		Form one("formz",false,10,10);
 		std::cout << a;
 		a.signForm(one);
 		a.decrementGrade(10);
@@ -26,11 +25,11 @@ int main()
 	try
 	{
 		Bureaucrat a("AA", 5);
-		Form one("science",false,1,1);
+		Form one("formx",false,1,1);
 		std::cout << a;
 		a.signForm(one);
 		a.decrementGrade(10);
-		std::cout << a << std::endl;
+		std::cout << a;
 		a.signForm(one);
 	}
 	
@@ -38,6 +37,34 @@ int main()
 	{
 		std::cerr << "! " << e.what() << std::endl;
 	}
+	
+	try
+	{
+		Bureaucrat a("AA", 5);
+		Form one;
+		std::cout << a;
+		a.signForm(one);
+		a.signForm(one);
+	}
+	
+	catch (std::exception &e)
+	{
+		std::cerr << "! " << e.what() << std::endl;
+	}
+
+	try
+	{
+		Bureaucrat a("AA", 150);
+		Form one;
+		std::cout << a;
+		a.signForm(one);
+	}
+	
+	catch (std::exception &e)
+	{
+		std::cerr << "! " << e.what() << std::endl;
+	}
+
 	return 0;
 }
 

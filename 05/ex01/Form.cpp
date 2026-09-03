@@ -2,7 +2,7 @@
 #include "Bureaucrat.hpp"
 #include <string>
 
-Form::Form() : _name("Default"),_is_signed(0),  _sign_grade(0), _exec_grade(0)
+Form::Form() : _name("not_a_very_special_form"),_is_signed(false),  _sign_grade(150), _exec_grade(150)
 {
 	std::cout << ".FORM Default Constructor" << std::endl;
 }
@@ -38,8 +38,8 @@ bool Form::beSigned(Bureaucrat &buro)
 {
 	if (buro.getGrade() > this->_sign_grade)
 		throw Form::GradeTooLowException();
-	else
-		return false;
+	setIsSigned(true);
+	return true;
 }
 
 std::string Form::getName() const
