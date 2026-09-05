@@ -32,11 +32,20 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	if ((getIsSigned() == true) && (executor.getGrade() >= getExecGrade()))
+	if (!getIsSigned())
+		throw FormNotSignedException();
+	if (executor.getGrade() > getExecGrade())
+		throw GradeTooLowException();
+	else
 	{
-		std::cout << executor.getName() << " executed " << getName() << std::endl;
-
-	}
+		std::ofstream output;
+        output.open((getTarget() + "_shrubbery").c_str(), std::ofstream::out | std::ofstream::trunc);
+        if (!output.is_open()) {
+            std::cerr << "!! Error opening " << getTarget() + "_shrubbery file!" << std::endl;
+        }
+        output << TREE << std::endl;
+        output.close();
+    }
 }
 
 

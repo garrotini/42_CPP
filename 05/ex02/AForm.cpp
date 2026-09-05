@@ -66,14 +66,24 @@ void AForm::setIsSigned(bool n)
 		_is_signed = false;
 }
 
+std::string AForm::getTarget() const
+{
+	return _target;
+}
+
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return "form needs to be signed before execution.";
+}
+
 const char *AForm::GradeTooLowException::what() const throw() 
 {
-	return "his grade is too low";
+	return "his grade is too low.";
 }
 
 const char *AForm::GradeTooHighException::what() const throw() 
 {
-	return "his grade is too high";
+	return "his grade is too high.";
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &src) 

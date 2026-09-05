@@ -3,6 +3,7 @@
 
 #include <string>
 #include <exception>
+#include <fstream>
 
 class Bureaucrat;
 
@@ -27,12 +28,18 @@ class AForm
 		int getSignGrade() const;
 		int getExecGrade() const;
 		void setIsSigned(bool n);
+		std::string getTarget() const;
 
 		// virtual void abstract() = 0;
 		virtual void execute(Bureaucrat const & executor) const = 0;
 
 		bool beSigned(Bureaucrat &buro);
 
+		class FormNotSignedException : public std::exception
+		{
+			public:
+                virtual const char  *what() const throw(); // throw not allowed
+		};
 		class GradeTooLowException : public std::exception 
 		{
             public:

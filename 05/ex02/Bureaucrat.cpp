@@ -113,7 +113,6 @@ void Bureaucrat::executeForm(AForm &form)
     }
 }
 
-
 const char *Bureaucrat::GradeTooLowException::what() const throw() 
 {
 	return "Exception: Grade Too Low";

@@ -1,6 +1,6 @@
 
 NAME 	= app.out
-SRC	= Bureaucrat.cpp ShrubberyCreationForm.cpp AForm.cpp main.cpp
+SRC	= Bureaucrat.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp AForm.cpp main.cpp
 OBJ	= $(SRC:.cpp=.o)
 CFLAGS 	= -Wall -Wextra -Werror -std=c++98
 CXX	= c++
