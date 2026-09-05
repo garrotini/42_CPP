@@ -104,7 +104,7 @@ int main()
 	try
 	{
 		Bureaucrat a("Leo", 146);
-		RobotomyRequestForm one;
+		RobotomyRequestForm one("R~F~F");
 		std::cout << a;
 		std::cout << one;
 		a.signForm(one);
@@ -117,6 +117,23 @@ int main()
 		std::cerr << "! " << e.what() << std::endl;
 	}
 
+	std::cout << std::endl << "-- another regular RobotomyRequestForm TESTS --" << std::endl << std::endl;
+
+	try
+	{
+		Bureaucrat a("Leo", 6);
+		RobotomyRequestForm one("R~F~F");
+		std::cout << a;
+		std::cout << one;
+		a.signForm(one);
+		std::cout << one;
+		a.executeForm(one);
+	}
+	
+	catch (std::exception &e)
+	{
+		std::cerr << "! " << e.what() << std::endl;
+	}
 	return 0;
 }
 
