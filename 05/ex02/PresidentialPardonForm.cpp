@@ -16,7 +16,6 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Pres
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) : AForm(other)
 {
 	std::cout << ".PPF Copy Constructor" << std::endl;
-	*this = other;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
@@ -26,7 +25,8 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
 {
-	(void)other;
+	if (this != &other)
+		AForm::operator=(other);
 	return *this;
 }
 
@@ -39,6 +39,5 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 	else
 		std::cout << getTarget() <<  " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
-
 
 

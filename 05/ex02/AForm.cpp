@@ -7,12 +7,12 @@ AForm::AForm() : _name("not_a_very_special_AForm"),_is_signed(false),  _sign_gra
 	std::cout << ".AForm Default Constructor" << std::endl;
 }
 
-AForm::AForm(const std::string name, int is_signed, int sign_grade, int exec_grade) : _name(name),_is_signed(is_signed),  _sign_grade(sign_grade), _exec_grade(exec_grade)
+AForm::AForm(const std::string name, bool is_signed, int sign_grade, int exec_grade) : _name(name),_is_signed(is_signed),  _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
 	std::cout << ".AForm Parameterized Constructor" << std::endl;
 }
 
-AForm::AForm(const AForm &other) : _name(other._name), _is_signed(other._is_signed),  _sign_grade(other._sign_grade), _exec_grade(other._exec_grade)
+AForm::AForm(const AForm &other) : _name(other._name), _is_signed(other._is_signed),  _sign_grade(other._sign_grade), _exec_grade(other._exec_grade), _target(other._target)
 {
 	std::cout << ".AForm Copy Constructor" << std::endl;
 }
@@ -21,7 +21,10 @@ AForm  &AForm::operator=(const AForm &other)
 {
     std::cout << ".AForm Assign Operator called" << std::endl;
     if (this != &other)
+	{
 		this->_is_signed = other.getIsSigned();
+		this->_target = other.getTarget();
+	}
     return *this;
 }
 
@@ -30,7 +33,7 @@ AForm::~AForm()
 	std::cout << ".Destructor" << std::endl;
 }
 
-bool AForm::beSigned(Bureaucrat &buro)
+bool AForm::beSigned(const Bureaucrat &buro)
 {
 	if (buro.getGrade() > this->_sign_grade)
 		throw AForm::GradeTooLowException();

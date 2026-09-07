@@ -16,7 +16,6 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRe
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : AForm(other)
 {
 	std::cout << ".RRF Copy Constructor" << std::endl;
-	*this = other;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
@@ -26,7 +25,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
 {
-	(void)other;
+	if (this != &other)
+		AForm::operator=(other);
 	return *this;
 }
 
@@ -38,7 +38,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 		throw GradeTooLowException();
 	else
 	{
-		std::cout << "DRILING: trzzzz trzzzz trzzzz... making TOO MUCH NOISE!" << std::endl;
+		std::cout << "DRILLING: trzzzz trzzzz trzzzz... making TOO MUCH NOISE!" << std::endl;
         if (rand() % 2)
             std::cout << getTarget() << " has been robotomized successfully." << std::endl;
         else

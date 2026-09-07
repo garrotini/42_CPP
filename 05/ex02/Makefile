@@ -25,6 +25,6 @@ t: re clean
 	./$(NAME)
 
 ffclean: fclean
-	rm SCF_shrubbery SCF_default_shrubbery
+	rm -f SCF_shrubbery SCF_default_shrubbery
 
 .PHONY: all fclean clean re t

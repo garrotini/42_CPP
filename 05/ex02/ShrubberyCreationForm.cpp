@@ -16,7 +16,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other)
 {
 	std::cout << ".SCF Copy Constructor" << std::endl;
-	*this = other;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -26,7 +25,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
-	(void)other;
+	if (this != &other)
+		AForm::operator=(other);
 	return *this;
 }
 
@@ -40,13 +40,20 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	{
 		std::ofstream output;
         output.open((getTarget() + "_shrubbery").c_str(), std::ofstream::out | std::ofstream::trunc);
-        if (!output.is_open()) {
+        if (!output.is_open())
+		{
             std::cerr << "!! Error opening " << getTarget() + "_shrubbery file!" << std::endl;
+			throw ErrorOpeningFileException();
         }
         output << TREE << std::endl;
         output.close();
     }
 }
 
+
+const char *ShrubberyCreationForm::ErrorOpeningFileException::what() const throw()
+{
+	return "! Error Opening File Exception";
+}
 
 

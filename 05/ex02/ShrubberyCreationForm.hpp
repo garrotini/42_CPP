@@ -1,5 +1,5 @@
-#ifndef SHRUBBERYCRATIONFORM_HPP
-#define SHRUBBERYCRATIONFORM_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
@@ -48,6 +48,12 @@ class ShrubberyCreationForm : public AForm
 		virtual ~ShrubberyCreationForm();
 		
 		void execute(Bureaucrat const & executor) const;
+		
+		class ErrorOpeningFileException : public std::exception 
+		{
+            public:
+                virtual const char  *what() const throw(); // throw is not allowed inside function
+        };
 };
 
 #endif

@@ -18,7 +18,7 @@ class AForm
 		std::string _target;
 	public:
 		AForm();
-		AForm(const std::string name, int is_signed, int sign_grade, int exec_grade);
+		AForm(const std::string name, bool is_signed, int sign_grade, int exec_grade);
 		AForm(const AForm &other);
 	 	AForm  &operator=(const AForm &other);
 		~AForm();
@@ -32,7 +32,7 @@ class AForm
 
 		virtual void execute(Bureaucrat const & executor) const = 0;
 
-		bool beSigned(Bureaucrat &buro);
+		bool beSigned(const Bureaucrat &buro);
 
 		class FormNotSignedException : public std::exception
 		{
@@ -43,7 +43,6 @@ class AForm
 		{
             public:
                 virtual const char  *what() const throw(); // throw is not allowed inside function
-
         };
         class GradeTooHighException : public std::exception 
 		{

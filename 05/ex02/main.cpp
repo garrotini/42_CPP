@@ -4,6 +4,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include <ctime>
 
 int main()
 {
@@ -197,6 +198,70 @@ int main()
 		std::cerr << "! " << e.what() << std::endl;
 	}
 
+	std::cout << std::endl << "-- Leo CLONING all the Forms, and EXECUTING them ALL TESTS --" << std::endl << std::endl;
+	
+	try
+	{
+		Bureaucrat leo("Leo", 5);
+
+		ShrubberyCreationForm shrub("SCF");
+		ShrubberyCreationForm cloneSCF(shrub);
+		ShrubberyCreationForm bakSCF;
+		bakSCF = shrub;
+		std::cout << shrub;
+		std::cout << cloneSCF;
+		std::cout << bakSCF;
+
+
+		RobotomyRequestForm robot("RRF");
+		RobotomyRequestForm cloneRRF(robot);
+		RobotomyRequestForm bakRRF;
+		bakRRF = robot;
+		std::cout << robot;
+		std::cout << cloneRRF;
+		std::cout << bakRRF;
+
+		PresidentialPardonForm presi("PPF");
+		PresidentialPardonForm clonePPF(presi);
+		PresidentialPardonForm bakPPF;
+		bakPPF = presi;
+		std::cout << presi;
+		std::cout << clonePPF;
+		std::cout << bakPPF;
+
+		std::cout << "...signing 3 instances of each form..." << std::endl;
+
+		leo.signForm(shrub);
+		leo.signForm(cloneSCF);
+		leo.signForm(bakSCF);
+
+		leo.signForm(robot);
+		leo.signForm(cloneRRF);
+		leo.signForm(bakRRF);
+
+		leo.signForm(presi);
+		leo.signForm(clonePPF);
+		leo.signForm(bakPPF);
+
+		std::cout << "...executing 3 instances of each form..." << std::endl;
+
+		leo.executeForm(shrub);
+		leo.executeForm(cloneSCF);
+		leo.executeForm(bakSCF);
+
+		leo.executeForm(robot);
+		leo.executeForm(cloneRRF);
+		leo.executeForm(bakRRF);
+
+		leo.executeForm(presi);
+		leo.executeForm(clonePPF);
+		leo.executeForm(bakPPF);
+	}
+	
+	catch (std::exception &e)
+	{
+		std::cerr << "! " << e.what() << std::endl;
+	}
 	return 0;
 }
 
