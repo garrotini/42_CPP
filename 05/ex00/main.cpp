@@ -10,7 +10,7 @@ int main()
 	{
 		Bureaucrat a("AA", 5);
 		// std::cout << a << std::endl;
-		a.setGrade(151);
+		a.decrementGrade(145);
 		std::cout << a;
 	}
 	
@@ -23,7 +23,7 @@ int main()
 	{
 		Bureaucrat b("BB", 5);
 		// std::cout << b << std::endl;
-		b.setGrade(15);
+		b.decrementGrade(10);
 		std::cout << b;
 	}
 
@@ -36,7 +36,7 @@ int main()
 	{
 		Bureaucrat d;
 		std::cout << d;
-		d.setGrade(123);
+		d.incrementGrade(25);
 		std::cout << d;
 	}
 
