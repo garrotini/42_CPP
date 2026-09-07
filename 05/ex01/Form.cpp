@@ -7,12 +7,8 @@ Form::Form() : _name("not_a_very_special_form"),_is_signed(false),  _sign_grade(
 	std::cout << ".FORM Default Constructor" << std::endl;
 }
 
-Form::Form(const std::string name, int is_signed, int sign_grade, int exec_grade) : _name(name),_is_signed(is_signed),  _sign_grade(sign_grade), _exec_grade(exec_grade)
+Form::Form(const std::string name, bool is_signed, int sign_grade, int exec_grade) : _name(name),_is_signed(is_signed),  _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
-	// this->_grade = this->setGrade(grade);
-	// this->_grade = grade;
-	// this->incrementGrade(0);
-
 	std::cout << ".FORM Parameterized Constructor" << std::endl;
 }
 
