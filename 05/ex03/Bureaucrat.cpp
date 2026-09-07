@@ -5,11 +5,12 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 	std::cout << ".Default Constructor" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
 {
-	// this->_grade = this->setGrade(grade);
-	this->_grade = grade;
-	this->incrementGrade(0);
+	if (_grade < 1)
+		throw GradeTooHighException();
+	if (_grade > 150)
+		throw GradeTooLowException();
 
 	std::cout << ".Parameterized Constructor" << std::endl;
 }
@@ -42,16 +43,6 @@ std::string Bureaucrat::getName() const
 	return _name;
 }
 
-void Bureaucrat::setGrade(int new_grade)
-{
-	if (new_grade > 150)
-		throw Bureaucrat::GradeTooLowException();
-	else if (new_grade < 1)
-		throw Bureaucrat::GradeTooHighException();
-	this->_grade = new_grade;
-	// return new_grade;
-}
-
 void Bureaucrat::incrementGrade(int i)
 {
 	if (i < 0)
@@ -60,11 +51,11 @@ void Bureaucrat::incrementGrade(int i)
 		return ;
 	}
 
-	int n = this->_grade - i;
+	int n = _grade - i;
 
-	if (n > 0)
-		return (setGrade(n));
-	throw Bureaucrat::GradeTooHighException();
+	if (n < 1)
+		throw Bureaucrat::GradeTooHighException();
+	_grade = n;
 }
 
 void Bureaucrat::decrementGrade(int i)
@@ -75,11 +66,11 @@ void Bureaucrat::decrementGrade(int i)
 		return ;
 	}
 
-	int n = this->_grade + i;
+	int n = _grade + i;
 
-	if (n <= 150)
-		return (setGrade(n));
-	throw Bureaucrat::GradeTooLowException();
+	if (n > 150)
+		throw Bureaucrat::GradeTooLowException();
+	_grade = n;
 }
 
 void Bureaucrat::signForm(AForm &form)
