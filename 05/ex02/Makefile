@@ -1,6 +1,6 @@
 
 NAME 	= app.out
-SRC	= Bureaucrat.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp AForm.cpp main.cpp
+SRC	= Bureaucrat.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp AForm.cpp main.cpp
 OBJ	= $(SRC:.cpp=.o)
 CFLAGS 	= -Wall -Wextra -Werror -std=c++98
 CXX	= c++
@@ -23,5 +23,8 @@ re: fclean all
 
 t: re clean
 	./$(NAME)
+
+ffclean: fclean
+	rm SCF_shrubbery SCF_default_shrubbery
 
 .PHONY: all fclean clean re t

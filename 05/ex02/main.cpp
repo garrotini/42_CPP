@@ -3,6 +3,7 @@
 #include "AForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
@@ -134,6 +135,68 @@ int main()
 	{
 		std::cerr << "! " << e.what() << std::endl;
 	}
+
+	std::cout << std::endl << "--  PresidentialPardonForm TESTS --" << std::endl << std::endl;
+	
+	try
+	{
+		Bureaucrat a("Leo", 5);
+		PresidentialPardonForm one("P~P~F");
+		std::cout << a;
+		std::cout << one;
+		a.signForm(one);
+		std::cout << one;
+		a.executeForm(one);
+	}
+	
+	catch (std::exception &e)
+	{
+		std::cerr << "! " << e.what() << std::endl;
+	}
+
+	std::cout << std::endl << "-- Exc1  PresidentialPardonForm TESTS --" << std::endl << std::endl;
+	
+	try
+	{
+		Bureaucrat a("Leo", 6);
+		PresidentialPardonForm one("P~P~F");
+		std::cout << a;
+		std::cout << one;
+		a.signForm(one);
+		std::cout << one;
+		a.executeForm(one);
+	}
+	
+	catch (std::exception &e)
+	{
+		std::cerr << "! " << e.what() << std::endl;
+	}
+
+	std::cout << std::endl << "-- Leo filling all the Forms TESTS --" << std::endl << std::endl;
+	
+	try
+	{
+		Bureaucrat leo("Leo", 5);
+		ShrubberyCreationForm shrub("SCF");
+		RobotomyRequestForm robot("RRF");
+		PresidentialPardonForm presi("PPF");
+		std::cout << leo;
+		std::cout << shrub;
+		std::cout << robot;
+		std::cout << presi;
+		leo.signForm(shrub);
+		leo.signForm(robot);
+		leo.signForm(presi);
+		leo.executeForm(shrub);
+		leo.executeForm(robot);
+		leo.executeForm(presi);
+	}
+	
+	catch (std::exception &e)
+	{
+		std::cerr << "! " << e.what() << std::endl;
+	}
+
 	return 0;
 }
 

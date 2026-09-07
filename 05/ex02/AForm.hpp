@@ -30,7 +30,6 @@ class AForm
 		void setIsSigned(bool n);
 		std::string getTarget() const;
 
-		// virtual void abstract() = 0;
 		virtual void execute(Bureaucrat const & executor) const = 0;
 
 		bool beSigned(Bureaucrat &buro);
