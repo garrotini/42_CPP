@@ -1,6 +1,7 @@
 #include "ScalarConverter.hpp"
 #include <climits>
 #include <cmath>
+#include <cstdlib>
 
 ScalarConverter::ScalarConverter() { }
 
@@ -24,6 +25,11 @@ static bool printBaseCase(const std::string &f_val, const std::string &d_val)
 	std::cout << "double: " << d_val << std::endl;
 	return true;
 }
+
+// std::isnan(), check if it's not a number!
+// https://cppreference-45864d.gitlab-pages.liu.se/en/cpp/numeric/math/isnan.html
+// std::isinf(), check if floating point is a positive or negative infinity
+// https://cppreference-45864d.gitlab-pages.liu.se/en/cpp/numeric/math/isinf.html
 
 static void printAll(double val)
 {
@@ -57,22 +63,25 @@ static bool isBaseCase(const std::string &av)
 
 static bool isChar(const std::string &av)
 {
-	if (av.size() == 1 && !std::isdigit(static_cast<unsigned char>(av[0])))
+	if (av.size() == 1 && !std::isdigit(static_cast<char>(av[0]))) // or unsigned char?
 	{
 		char c = av[0];
-		printAll(static_cast<double>(c));
+		printAll(static_cast<double>(c)); // or double? 
 		return true;
 	}
 	return false;
 }
 
-// std::isnan(), check if it's not a number!
-// https://cppreference-45864d.gitlab-pages.liu.se/en/cpp/numeric/math/isnan.html
-
 static bool isInt(const std::string &av)
 {
-	(void)av;
-	return false;
+	// if (av.find('.') || av.find('f')) // std::string::npos?
+	// 	return false;
+	long n = atol(av.c_str());
+	if (n < INT_MIN || n > INT_MAX)
+		return false;
+	int x = static_cast<int>(n);
+	printAll(static_cast<double>(x));
+	return true;
 }
 
 static bool isFloat(const std::string &av)
@@ -81,11 +90,13 @@ static bool isFloat(const std::string &av)
 	return false;
 }
 
+
 static bool isDouble(const std::string &av)
 {
 	(void)av;
 	return false;
 }
+
 
 void ScalarConverter::convert(const std::string &av) 
 {
