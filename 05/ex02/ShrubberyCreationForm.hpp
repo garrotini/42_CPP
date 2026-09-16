@@ -40,14 +40,15 @@ class AForm;
 
 class ShrubberyCreationForm : public AForm
 {
+	private:
+		void formAction() const; // execute from AForm will call this!
+
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &other);
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 		virtual ~ShrubberyCreationForm();
-		
-		void execute(Bureaucrat const & executor) const;
 		
 		class ErrorOpeningFileException : public std::exception 
 		{

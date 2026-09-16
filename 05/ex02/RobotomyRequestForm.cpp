@@ -30,20 +30,13 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 	return *this;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+void RobotomyRequestForm::formAction() const
 {
-	if (!getIsSigned())
-		throw FormNotSignedException();
-	if (executor.getGrade() > getExecGrade())
-		throw GradeTooLowException();
+	std::cout << "DRILLING: trzzzz trzzzz trzzzz... making TOO MUCH NOISE!" << std::endl;
+	if (rand() % 2)
+		std::cout << getTarget() << " has been robotomized successfully." << std::endl;
 	else
-	{
-		std::cout << "DRILLING: trzzzz trzzzz trzzzz... making TOO MUCH NOISE!" << std::endl;
-        if (rand() % 2)
-            std::cout << getTarget() << " has been robotomized successfully." << std::endl;
-        else
-            std::cout << getTarget() << " robotomy failed." << std::endl;
-    }
+		std::cout << getTarget() << " robotomy failed." << std::endl;
 }
 
 

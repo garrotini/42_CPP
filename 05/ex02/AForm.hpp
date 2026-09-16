@@ -27,10 +27,10 @@ class AForm
 		bool getIsSigned() const;
 		int getSignGrade() const;
 		int getExecGrade() const;
-		void setIsSigned(bool n);
 		std::string getTarget() const;
 
-		virtual void execute(Bureaucrat const & executor) const = 0;
+		void execute(Bureaucrat const & executor) const;
+		virtual void formAction() const = 0;
 
 		bool beSigned(const Bureaucrat &buro);
 

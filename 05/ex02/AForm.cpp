@@ -33,11 +33,20 @@ AForm::~AForm()
 	std::cout << ".Destructor" << std::endl;
 }
 
+void AForm::execute(Bureaucrat const & executor) const
+{
+    if (!getIsSigned())
+        throw FormNotSignedException();
+    if (executor.getGrade() > getExecGrade())
+        throw GradeTooLowException();
+    formAction();
+}
+
 bool AForm::beSigned(const Bureaucrat &buro)
 {
 	if (buro.getGrade() > this->_sign_grade)
 		throw AForm::GradeTooLowException();
-	setIsSigned(true);
+	_is_signed = true;
 	return true;
 }
 
@@ -59,14 +68,6 @@ int AForm::getExecGrade() const
 bool AForm::getIsSigned() const
 {
 	return _is_signed;
-}
-
-void AForm::setIsSigned(bool n)
-{
-	if (n == true)
-		_is_signed = true;
-	else
-		_is_signed = false;
 }
 
 std::string AForm::getTarget() const

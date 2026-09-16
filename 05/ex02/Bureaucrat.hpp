@@ -23,22 +23,22 @@ class Bureaucrat
 		std::string getName() const;
 		int getGrade() const;
 
-		void incrementGrade(int i);
-		void decrementGrade(int i);
+		void incrementGrade();
+		void decrementGrade();
 
 		void signForm(AForm &form);
-		void executeForm(AForm &form);
+		void executeForm(const AForm &form);
 
 		class GradeTooLowException : public std::exception 
 		{
             public:
-                virtual const char  *what() const throw(); // throw is not allowed inside function
+                virtual const char  *what() const throw();
 
         };
         class GradeTooHighException : public std::exception 
 		{
             public:
-                virtual const char  *what() const throw(); // throw is not allowed inside function
+                virtual const char  *what() const throw();
         };
 
 };
