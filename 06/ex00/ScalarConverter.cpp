@@ -26,12 +26,14 @@ static void printAll(double val)
 	if (std::isnan(val) || std::isinf(val))
 		std::cout << "char: impossible" << std::endl;
 	else if (val < 32 || val > 126)
-		std::cout << "char: non displayable" << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(val) << "'" << std::endl;
 
 	// int
-	if (val < INT_MIN || val > INT_MAX || std::isnan(val) || std::isinf(val))
+	const bool int_ok = !std::isnan(val) && !std::isinf(val) && 
+		val >= static_cast<double>(INT_MIN) && val <= static_cast<double>(INT_MAX);
+	if (!int_ok)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(val) << std::endl;
@@ -39,13 +41,13 @@ static void printAll(double val)
 	// float
 	float f_val = static_cast<float>(val);
 	std::cout << "float: " << f_val;
-	if (f_val == static_cast<int>(f_val))
-			std::cout << ".0";
+	if (int_ok && f_val == static_cast<int>(f_val))
+		std::cout << ".0";
 	std::cout << "f" << std::endl;
 
 	// double
 	std::cout << "double: " << val;
-	if (val == static_cast<int>(val))
+	if (int_ok && val == static_cast<int>(val))
 		std::cout << ".0";
 	std::cout << std::endl;
 }
@@ -117,9 +119,14 @@ static bool isFloat(const std::string &av)
 	return true;
 }
 
-
 void ScalarConverter::convert(const std::string &av) 
 {
+	if (av.empty())
+	{
+		std::cerr << "Error: invalid input" << std::endl;
+		return;
+	}
+
 	if (isBaseCase(av) || isChar(av) || isInt(av) || isDouble(av) || isFloat(av))
 		return;
 	std::cerr << "Error: invalid input" << std::endl;
