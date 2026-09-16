@@ -9,6 +9,10 @@ Form::Form() : _name("not_a_very_special_form"),_is_signed(false),  _sign_grade(
 
 Form::Form(const std::string name, bool is_signed, int sign_grade, int exec_grade) : _name(name),_is_signed(is_signed),  _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
+	if (sign_grade > 150 || exec_grade > 150)
+		throw Form::GradeTooLowException();
+	if (sign_grade < 1 || exec_grade < 1)
+		throw Form::GradeTooHighException();
 	std::cout << ".FORM Parameterized Constructor" << std::endl;
 }
 
@@ -34,7 +38,7 @@ bool Form::beSigned(Bureaucrat &buro)
 {
 	if (buro.getGrade() > this->_sign_grade)
 		throw Form::GradeTooLowException();
-	setIsSigned(true);
+	_is_signed = true;
 	return true;
 }
 
@@ -58,28 +62,20 @@ bool Form::getIsSigned() const
 	return _is_signed;
 }
 
-void Form::setIsSigned(bool n)
-{
-	if (n == true)
-		_is_signed = true;
-	else
-		_is_signed = false;
-}
-
 const char *Form::GradeTooLowException::what() const throw() 
 {
-	return "his grade is too low";
+	return "Form stays unsigned after failed sign because: grade too low";
 }
 
 const char *Form::GradeTooHighException::what() const throw() 
 {
-	return "his grade is too high";
+	return "Form stays unsigned after failed sign because: grade too high";
 }
 
 std::ostream &operator<<(std::ostream &out, const Form &src) 
 {
     out << "form: " <<  src.getName() << ", signed: " << src.getIsSigned() << ", sign grade: " << src.getSignGrade() << ", exec grade: "
-	   << src.getExecGrade() << std::endl;
+	   << src.getExecGrade();
     return out;
 }
 

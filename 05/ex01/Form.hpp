@@ -24,20 +24,19 @@ class Form
 		bool getIsSigned() const;
 		int getSignGrade() const;
 		int getExecGrade() const;
-		void setIsSigned(bool n);
 
 		bool beSigned(Bureaucrat &buro);
 
 		class GradeTooLowException : public std::exception 
 		{
             public:
-                virtual const char  *what() const throw(); // throw is not allowed inside function
+                virtual const char  *what() const throw();
 
         };
         class GradeTooHighException : public std::exception 
 		{
             public:
-                virtual const char  *what() const throw(); // throw is not allowed inside function
+                virtual const char  *what() const throw();
         };
 };
 
