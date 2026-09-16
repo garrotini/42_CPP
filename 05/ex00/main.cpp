@@ -10,8 +10,8 @@ int main()
 	{
 		Bureaucrat a("AA", 5);
 		// std::cout << a << std::endl;
-		a.decrementGrade(145);
-		std::cout << a;
+		a.decrementGrade();
+		std::cout << a << std::endl;
 	}
 	
 	catch (std::exception &e)
@@ -23,8 +23,8 @@ int main()
 	{
 		Bureaucrat b("BB", 5);
 		// std::cout << b << std::endl;
-		b.decrementGrade(10);
-		std::cout << b;
+		b.incrementGrade();
+		std::cout << b << std::endl;
 	}
 
 	catch (std::exception &e)
@@ -35,9 +35,9 @@ int main()
 	try
 	{
 		Bureaucrat d;
-		std::cout << d;
-		d.incrementGrade(25);
-		std::cout << d;
+		std::cout << d << std::endl;
+		d.incrementGrade();
+		std::cout << d << std::endl;
 	}
 
 	catch (std::exception &e)
@@ -75,8 +75,8 @@ int main()
 	{
 		Bureaucrat c("CC", 2);
 		// Bureaucrat c("CC", 1);
-		c.incrementGrade(1);
-		std::cout << c;
+		c.incrementGrade();
+		std::cout << c << std::endl;
 	}
 
 	catch (std::exception &e)
@@ -87,10 +87,11 @@ int main()
 	
 	try
 	{
-		Bureaucrat e("EE", 148);
-		// Bureaucrat e("EE", 149);
-		e.decrementGrade(-2);
-		std::cout << e;
+		// Bureaucrat e("EE", 148);
+		Bureaucrat e("EE", 149);
+		e.decrementGrade();
+		// e.decrementGrade();
+		std::cout << e << std::endl;
 	}
 
 	catch (std::exception &e)
@@ -104,14 +105,14 @@ int main()
 	Bureaucrat a;
 	Bureaucrat clone(a);
 
-	std::cout << "Original a: " << a;
-	std::cout << "Replica  a: " << clone;
+	std::cout << "Original a: " << a << std::endl;
+	std::cout << "Replica  a: " << clone << std::endl;
 
 	Bureaucrat b("BB", 123);
 	Bureaucrat clone_b;
 	clone_b = b; // as name is a const string, only grade is copied!
-	std::cout << "Original b: " << b;
-	std::cout << "Replica  b: " << clone_b;
+	std::cout << "Original b: " << b << std::endl;
+	std::cout << "Replica  b: " << clone_b << std::endl;
 
 	return 0;
 }

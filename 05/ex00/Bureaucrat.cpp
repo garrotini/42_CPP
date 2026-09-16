@@ -1,6 +1,5 @@
 #include "Bureaucrat.hpp"
 
-
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 {
 	std::cout << ".Default Constructor" << std::endl;
@@ -44,34 +43,18 @@ std::string Bureaucrat::getName() const
 	return _name;
 }
 
-void Bureaucrat::incrementGrade(int i)
+void Bureaucrat::incrementGrade()
 {
-	if (i < 0)
-	{
-		std::cerr << "! Invalid increment value. Grade not changed !" << std::endl;
-		return ;
-	}
-
-	int n = _grade - i;
-
-	if (n < 1)
+	if (_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
-	_grade = n;
+	_grade--;
 }
 
-void Bureaucrat::decrementGrade(int i)
+void Bureaucrat::decrementGrade()
 {
-	if (i < 0)
-	{
-		std::cerr << "! Invalid decrement value. Grade not changed !" << std::endl;
-		return ;
-	}
-
-	int n = _grade + i;
-
-	if (n > 150)
+	if (_grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
-	_grade = n;
+	_grade++;
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() 
@@ -85,7 +68,7 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &src) {
-    out << src.getName() << ", bureaucrat grade " << src.getGrade() << "." << std::endl;
+    out << src.getName() << ", bureaucrat grade " << src.getGrade() << ".";
     return out;
 }
 
