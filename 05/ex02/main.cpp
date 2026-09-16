@@ -262,6 +262,23 @@ int main()
 	{
 		std::cerr << "! " << e.what() << std::endl;
 	}
+
+	std::cout << std::endl << "-- Execute unsigned form TESTS --" << std::endl << std::endl;
+
+	try
+	{
+		Bureaucrat leo("Leo", 1);
+		RobotomyRequestForm unsignedRobot("R~R~F");
+		std::cout << unsignedRobot;
+		leo.executeForm(unsignedRobot);
+									
+		std::cout << unsignedRobot;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "! " << e.what() << std::endl;
+	}
+
 	return 0;
 }
 

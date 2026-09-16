@@ -53,7 +53,7 @@ class ShrubberyCreationForm : public AForm
 		class ErrorOpeningFileException : public std::exception 
 		{
             public:
-                virtual const char  *what() const throw(); // throw is not allowed inside function
+                virtual const char  *what() const throw();
         };
 };
 

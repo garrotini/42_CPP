@@ -37,17 +37,17 @@ class AForm
 		class FormNotSignedException : public std::exception
 		{
 			public:
-                virtual const char  *what() const throw(); // throw not allowed
+                virtual const char  *what() const throw();
 		};
 		class GradeTooLowException : public std::exception 
 		{
             public:
-                virtual const char  *what() const throw(); // throw is not allowed inside function
+                virtual const char  *what() const throw();
         };
         class GradeTooHighException : public std::exception 
 		{
             public:
-                virtual const char  *what() const throw(); // throw is not allowed inside function
+                virtual const char  *what() const throw();
         };
 };
 
