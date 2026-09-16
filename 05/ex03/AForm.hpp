@@ -27,27 +27,28 @@ class AForm
 		bool getIsSigned() const;
 		int getSignGrade() const;
 		int getExecGrade() const;
-		void setIsSigned(bool n);
 		std::string getTarget() const;
 
-		virtual void execute(Bureaucrat const & executor) const = 0;
+		void execute(Bureaucrat const & executor) const;
+		virtual void formAction() const = 0;
+
 
 		bool beSigned(const Bureaucrat &buro);
 
 		class FormNotSignedException : public std::exception
 		{
 			public:
-                virtual const char  *what() const throw(); // throw not allowed
+                virtual const char  *what() const throw();
 		};
 		class GradeTooLowException : public std::exception 
 		{
             public:
-                virtual const char  *what() const throw(); // throw is not allowed inside function
+                virtual const char  *what() const throw();
         };
         class GradeTooHighException : public std::exception 
 		{
             public:
-                virtual const char  *what() const throw(); // throw is not allowed inside function
+                virtual const char  *what() const throw();
         };
 };
 

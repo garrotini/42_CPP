@@ -30,24 +30,17 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return *this;
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void ShrubberyCreationForm::formAction() const
 {
-	if (!getIsSigned())
-		throw FormNotSignedException();
-	if (executor.getGrade() > getExecGrade())
-		throw GradeTooLowException();
-	else
+	std::ofstream output;
+	output.open((getTarget() + "_shrubbery").c_str(), std::ofstream::out | std::ofstream::trunc);
+	if (!output.is_open())
 	{
-		std::ofstream output;
-        output.open((getTarget() + "_shrubbery").c_str(), std::ofstream::out | std::ofstream::trunc);
-        if (!output.is_open())
-		{
-            std::cerr << "!! Error opening " << getTarget() + "_shrubbery file!" << std::endl;
-			throw ErrorOpeningFileException();
-        }
-        output << TREE << std::endl;
-        output.close();
-    }
+		std::cerr << "!! Error opening " << getTarget() + "_shrubbery file!" << std::endl;
+		throw ErrorOpeningFileException();
+	}
+	output << TREE << std::endl;
+	output.close();
 }
 
 
