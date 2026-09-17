@@ -28,11 +28,13 @@ static AForm* makeShrub(const std::string& target)
     return new ShrubberyCreationForm(target);
 }
 
-static AForm* makeRobot(const std::string& target) {
+static AForm* makeRobot(const std::string& target) 
+{
     return new RobotomyRequestForm(target);
 }
 
-static AForm* makePresi(const std::string& target) {
+static AForm* makePresi(const std::string& target) 
+{
     return new PresidentialPardonForm(target);
 }
 
@@ -43,7 +45,8 @@ AForm *Intern::makeForm(std::string newForm, std::string target)
 	AForm *(*makers[3])(const std::string &) = {makeShrub,makeRobot,makePresi};
 	const std::string types[3] = {"ShrubberyCreationForm","RobotomyRequestForm","PresidentialPardonForm"};
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 3; i++) 
+	{
         if (newForm == expectedForms[i]) 
 		{
             std::cout << "Intern creates " << types[i] << std::endl;
