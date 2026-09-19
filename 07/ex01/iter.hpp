@@ -1,0 +1,20 @@
+#ifndef ITER_HPP
+#define ITER_HPP
+
+#include <iostream>
+#include <cctype>
+#include <string>
+#include <cstring>
+
+template <typename T, typename F>
+void iter(T *array, size_t length, F fn)
+{
+	if (!array)
+		return ;
+
+	for (size_t i = 0; i < length; i++)
+		fn(array[i]);
+
+}
+
+#endif
