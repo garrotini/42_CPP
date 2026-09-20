@@ -14,7 +14,6 @@ void iter(T *array, size_t length, F fn)
 
 	for (size_t i = 0; i < length; i++)
 		fn(array[i]);
-
 }
 
 #endif

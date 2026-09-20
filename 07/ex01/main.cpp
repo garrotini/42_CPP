@@ -30,6 +30,12 @@ static void fake_rot13(char &c)
 	std::cout << static_cast<char>(k) << std::endl;
 }
 
+static std::string setDefault(std::string &str)
+{
+	str = "changeme2026";
+	return (str);
+}
+
 template <typename T>
 void printTemplate(const T &x)
 {
@@ -61,8 +67,16 @@ int main()
 	std::string array[] = {"first", "second", "third"};
 	std::cout << "__STR array, print__" << std::endl;
 	iter(array, 3, printTemplate<std::string>);
-	// iter(array[0], 5, fake_rot13);
+	iter(array, 3, setDefault);
+	iter(array, 3, printTemplate<std::string>);
 
+	std::cout << "__const int array, print__" << std::endl;
+	const int arr[5] = {10,20,30,40,50};
+	iter(arr, 5, printTemplate<int>);
+	iter(arr, 5, print_triple_Int);
+	std::cout << "__const float array, print__" << std::endl;
+	const float flo[5] = {10.1,20.1,30.1,40.1,50.1};
+	iter(flo, 5, printTemplate<float>);
 
 	return 0;
 }
