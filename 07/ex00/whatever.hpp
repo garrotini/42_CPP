@@ -1,8 +1,8 @@
 #ifndef WHATEVER_HPP
 #define WHATEVER_HPP
 
-
 #include <iostream>
+#include <string>
 
 template <typename T>
 T max(T &x, T &y)

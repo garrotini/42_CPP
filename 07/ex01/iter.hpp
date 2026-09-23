@@ -2,9 +2,7 @@
 #define ITER_HPP
 
 #include <iostream>
-#include <cctype>
 #include <string>
-#include <cstring>
 
 template <typename T, typename F>
 void iter(T *array, size_t length, F fn)
