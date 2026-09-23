@@ -2,9 +2,8 @@
 #define ARRAY_HPP
 
 #include <iostream>
-#include <cctype>
 #include <string>
-#include <cstring>
+#include <stdexcept>
 #include <exception>
 
 template <typename T>
@@ -26,6 +25,11 @@ class Array
 		const T &operator[](size_t i) const;
 
 };
+
+// templates must ship their definitions
+// instead of having the definitions inside the class,
+// a new tpp file was created for that reason
+// (that's also why it's included after the class, and not before!)
 
 #include "Array.tpp"
 
