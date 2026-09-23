@@ -10,7 +10,7 @@ template <typename T>
 Array<T>::Array(const Array &other) : _arr(NULL), _len(other._len)
 {
 	if (_len)
-		_arr = new T[_len];
+		_arr = new T[_len]();
 	for (size_t i = 0; i < _len; ++i)
 		_arr[i] = other._arr[i];
 }
@@ -20,16 +20,18 @@ Array<T> &Array<T>::operator=(const Array &other)
 {
 	if (this == &other)
 		return *this;
-	if (this->_arr)
-		delete[] this->_arr;
 
-	this->_arr = new T[other.size()];
+	T *temp = new T[other._len]();
 
-	for (unsigned int i = 0; i < this->_len; i++)
-		this->_arr[i] = other._arr[i];
+	for (size_t i = 0; i < other._len; i++)
+		temp[i] = other._arr[i];
+
+	delete[] this->_arr; 
+
+	this->_arr = temp;
 	this->_len = other.size();
 
-	return (*this);
+	return *this;
 }
 
 template <typename T>

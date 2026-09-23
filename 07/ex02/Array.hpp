@@ -5,6 +5,7 @@
 #include <cctype>
 #include <string>
 #include <cstring>
+#include <exception>
 
 template <typename T>
 class Array
@@ -26,7 +27,7 @@ class Array
 
 };
 
-#include "Array.cpp"
+#include "Array.tpp"
 
 
 #endif
