@@ -40,6 +40,9 @@ Array<T>::~Array(void)
 }
 
 template <typename T>
+size_t Array<T>::size(void) const { return (_len); }
+
+template <typename T>
 T &Array<T>::operator[](size_t i)
 {
 	if (i >= _len)
@@ -54,8 +57,5 @@ const T &Array<T>::operator[](size_t i) const
 		throw (std::out_of_range("Index out of bounds"));
 	return (_arr[i]);
 }
-
-template <typename T>
-size_t Array<T>::size(void) const { return (_len); }
 
 
