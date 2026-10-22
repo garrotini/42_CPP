@@ -1,23 +1,70 @@
-// #include "easyfind.hpp"
-#include <iostream>
+#include "easyfind.hpp"
 #include <vector>
+#include <list>
 
 int main()
 {
 	std::cout << "__ vector testing __" << std::endl;
 
-	std::vector<int> first;
-	std::vector<int> second (4,100);
-	std::vector<int> third (second.begin(), second.end());
-	std::vector<int> fourth (third);
+	// no push_front(), only push_back()
 
-	int myints[] = {16,2,77,29};
-	std::vector<int> fifth (myints, myints + sizeof(myints) / sizeof(int));
+	std::vector<int> vec;
+	vec.push_back(2);
+	vec.push_back(4);
+	vec.push_back(6);
 
-	std::cout << "The contents of fifth are:";
-	for (std::vector<int>::iterator it = fifth.begin(); it != fifth.end(); it++)
-		std::cout << ' ' << *it;
-	std::cout << '\n';
+	try
+	{
+		int n = 4;
+		int i = easyfind(vec, n);
+		std::cout << "Found value `" << n << "` in vector at index: [" << i << "]" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try
+	{
+		int n = 5;
+		int i = easyfind(vec, n);
+		std::cout << "Found value `" << n << "` in vector at index: [" << i << "]" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << "__ list testing __" << std::endl;
+
+	// vector has no push_front(), but lists have it!
+
+	std::list<int> lst;
+	lst.push_back(1);
+	lst.push_front(3);
+	lst.push_front(5);
+
+	try
+	{
+		int n = 4;
+		int i = easyfind(lst, n);
+		std::cout << "Found value `" << n << "` in vector at index: [" << i << "]" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try
+	{
+		int n = 5;
+		int i = easyfind(lst, n);
+		std::cout << "Found value `" << n << "` in vector at index: [" << i << "]" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 	return 0;
 }
