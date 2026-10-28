@@ -1,5 +1,5 @@
 
-NAME = ex01
+NAME = span
 SRC	= main.cpp
 OBJ	= $(SRC:.cpp=.o)
 CFLAGS 	= -Wall -Wextra -Werror -std=c++98
