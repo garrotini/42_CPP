@@ -3,7 +3,7 @@
 #include <climits>
 #include <limits>
 #include <stdexcept>
-
+#include <numeric>
 
 Span::Span(void) : vec(), limit(0) {}
 
@@ -31,34 +31,24 @@ void Span::addNumber(long x)
 	vec.push_back(static_cast<int>(x));
 }
 
-unsigned int Span::getLimit() const
-{
-	return (this->limit);
-}
-
 int Span::shortestSpan() const
 {
 	if (vec.size() <= 1)
-		throw (std::runtime_error("No space left for a vector"));
+		throw (std::runtime_error("Not enough elements to compute a span"));
 
 	std::vector<int> sorted(vec);
    	std::sort(sorted.begin(), sorted.end());
 
-	long min = LONG_MAX;
+	std::vector<int> diffs(sorted.size());
+	std::adjacent_difference(sorted.begin(), sorted.end(), diffs.begin());
 
-	for (size_t i = 0; i < sorted.size() - 1; i++)
-	{
-		if (sorted[i+1] - sorted[i] < min)
-			min = sorted[i+1] - sorted[i];
-	}
-
-	return (static_cast<int>(min));
+	return (*std::min_element(diffs.begin() + 1, diffs.end()));
 }
 
 int Span::longestSpan() const
 {
 	if (vec.size() <= 1)
-		throw (std::runtime_error("No space left for a vector"));
+		throw (std::runtime_error("Not enough elements to compute a span"));
 
 	int min = *std::min_element(vec.begin(), vec.end());
 	int max = *std::max_element(vec.begin(), vec.end());

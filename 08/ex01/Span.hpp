@@ -21,7 +21,6 @@ class Span
 		~Span(void);
 
 		void addNumber(long x);
-		unsigned int getLimit() const;
 		int shortestSpan() const;
 		int longestSpan() const;
 };
